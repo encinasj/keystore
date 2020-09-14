@@ -1,6 +1,6 @@
 from django.contrib import admin
 from core.erp.models import *
-# Register your models here.
+
 admin.site.register(Client)
 admin.site.register(Sale)
 admin.site.register(Category)
