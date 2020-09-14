@@ -1,0 +1,137 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <title>CornerStore</title>  
+  <!-- Required meta tags -->
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <!--     Fonts and icons     -->
+  <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+  <!-- Material Kit CSS -->
+  <link href="{% static 'css/material-dashboard.css' %}" rel="stylesheet" />
+</head>
+<body>
+  <div class="wrapper ">
+    <div class="sidebar" data-color="blue" data-background-color="white">
+      <!--
+        Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger | blue"
+        Tip 2: you can also add an image using data-image tag
+      -->
+      <div class="logo">
+        <a class="simple-text logo-normal">
+          <span class="material-icons">
+            store
+          </span>
+          CornerStore
+        </a>
+      </div>
+      <div class="sidebar-wrapper">
+        <ul class="nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="{% url 'base' %}">
+              <i class="material-icons">dashboard</i>
+              <p>Dashboard</p>
+            </a>
+          </li>
+          <!-- your sidebar here -->
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'client' %}">
+              <i class="material-icons">supervisor_account</i>
+              <p>Cliente</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="#0">
+              <i class="material-icons">point_of_sale</i>
+              <p>Ventas</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="#0">
+              <i class="material-icons">category</i>
+              <p>Categoria</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="{% url 'product' %}">
+              <i class="material-icons">local_mall</i>
+              <p>Productos</p>
+            </a>
+          </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="#0">
+              <i class="material-icons">receipt</i>
+              <p>Detalles de ventas</p>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="main-panel">
+      <!-- Navbar -->
+      <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
+        <div class="container-fluid">
+        <div class="navbar-wrapper">
+            <a class="navbar-brand">Dashboard</a>
+        </div>
+        <form class="navbar-form">
+            <span class="bmd-form-group">
+                <div class="input-group no-border">
+                <input type="text" value="" class="form-control" autocomplete="off" placeholder="Buscar...">
+                <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                    <i class="material-icons">search</i>
+                </button>
+                </div>
+            </span>
+        </form>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+            <span class="navbar-toggler-icon icon-bar"></span>
+        </button>
+          <div class="collapse navbar-collapse justify-content-end">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:;">
+                  <i class="material-icons">notifications</i>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="javascript:;">
+                  <i class="material-icons">person</i>
+                </a>
+              </li>
+              <!-- your navbar here -->
+            </ul>
+          </div>
+        </div>
+      </nav>
+      <!-- End Navbar -->
+      <div class="content">
+        {% block content %}
+        {% endblock content %}
+      </div>
+      <footer class="footer">
+        <div class="container-fluid">
+          <div class="copyright float-right">
+            &copy;
+            <script>
+              document.write(new Date().getFullYear())
+            </script> <i class="material-icons">offline_bolt </i> by
+            <a>  Encinas</a> 
+          </div>
+          <!-- your footer here if you wants -->
+        </div>
+      </footer>
+    </div>
+  </div>
+</body>
+</html>
