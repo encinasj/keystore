@@ -1,5 +1,9 @@
 from django.shortcuts import render
+#Django
+from django.views.generic import ListView
+#ours
 from core.erp.models import Category
+
 
 def frontpage(request):
     template_name = 'base.html'
@@ -9,13 +13,17 @@ def client(request):
     template_name = 'client.html'
     return render ( request, template_name)
 
-def category(request):
+
+class CategoryList(ListView):
+    #show category list
+    model = Category
     template_name = 'category.html'
-    category = Category.objects.all()
-    context = {
-        'category': category,
-        }
-    return render(request, template_name, context)
+
+    def get_context_data(self,**kwargs):
+        context = super().get_context_data(**kwargs)
+        context['title'] = 'Listado de categorías'
+        
+        return context
 
 def product(request):
     template_name = 'product.html'

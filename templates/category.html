@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-
+{% load static %}
 {% block content %}
 <div class="content">
     <div class="container-fluid">
@@ -8,50 +8,71 @@
                 data-original-title="Add Task">
             <i class="material-icons">add</i> Agregar 
         </button>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="card">
+        <div class="card">
             <div class="card-header card-header-blue">
-              <h4 class="card-title ">Listado de categorías</h4>
-              <p class="card-category"> categorias de lo que ocupe </p>
+                <h4 class="card-title ">Listado de categorías</h4>
+                <p class="card-category"> categorias de lo que ocupe </p>
             </div>
+            <style>
+                
+            </style>
             <div class="card-body">
-              <div class="table-responsive">
-                <table class="table">
-                  <thead class=" text-blue">
-                    <th>ID</th>
-                    <th>Nombre</th>
-                    <th>Descripción</th>
-                    <th>Opciones</th>
-                  </thead>
-                  <tbody>
-                    {% for cat in category %}
-                        <tr>
-                            <td>{{ cat.id }}</td>
-                            <td>{{ cat.name }}</td>
-                            <td>{{ cat.desc}}</td>
-                            <td>
-                                <button type="button" rel="tooltip" title="" 
-                                        class="btn btn-info btn-link btn-sm" 
-                                        data-original-title="Edit Task">
-                                    <i class="material-icons">edit</i>
-                                </button>
-
-                                <button type="button" rel="tooltip" title="" 
-                                        class="btn btn-danger btn-link btn-sm" 
-                                        data-original-title="Remove">
-                                    <i class="material-icons">close</i>
-                                </button>
-                            </td>
-                        </tr>
-                    {% endfor %}
-                  </tbody>
-                </table>
-              </div>
+                <div class="mdc-data-table" > 
+                    <div class="mdc-data-table__table-container">
+                        <table id="data" class="mdl-data-table" style="width:100%">
+                            <thead class="text-blue">
+                                <th scope="col" style="width: 10%;">ID</th>
+                                <th>Nombre</th>
+                                <th>Descripción</th>
+                                <th>Opciones</th>
+                            </thead>
+                            <tbody class="mdc-data-table__content ">
+                                {% for cat in object_list %}
+                                    <tr>
+                                        <td>{{ cat.id }}</td>
+                                        <td>{{ cat.name }}</td>
+                                        <td>{{ cat.desc}}</td>
+                                        <td>
+                                            <button type="button" rel="tooltip" title="" 
+                                                    class="btn btn-info btn-link btn-sm" 
+                                                    data-original-title="Edit Task">
+                                                <i class="material-icons">edit</i>
+                                            </button>
+        
+                                            <button type="button" rel="tooltip" title="" 
+                                                    class="btn btn-danger btn-link btn-sm" 
+                                                    data-original-title="Remove">
+                                                <i class="material-icons">close</i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 {% endblock content %}
+
+{% block javascript %}
+  <script type="application/javascript">
+    $(function() {
+        $('#data').DataTable( {
+            responsive:true,
+            autoWidth:false,
+            "language" : {
+                url : '{% static 'spanish.txt' %}'
+            },
+            columnDefs: [
+                {
+                    targets: ['_all'],
+                    className: 'mdc-data-table__cell'
+                }
+            ]
+        } );
+    } );
+  </script>
+{% endblock javascript %}

@@ -1,11 +1,12 @@
 #Django
 from django.urls import path
-from core.erp import views
+from core.erp.views import *
 
 urlpatterns = [
-    path('',views.frontpage, name='base'),
-    path('client/',views.client, name='client'),
-    path('product/',views.product, name='product'),
-    path('category/',views.category, name='category'),
+    path('', frontpage, name='base'),
+    path('client/', client, name='client'),
+    path('product/', product, name='product'),
+    path('category/', CategoryList.as_view(), name='category'),
   
 ] 
+ 

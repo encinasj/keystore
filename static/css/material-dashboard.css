@@ -2255,7 +2255,7 @@ pre code {
 
 @media (max-width: 575.98px) {
   .table-responsive-sm {
-    display: block;
+    display: contents;
     width: 100%;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
@@ -2755,10 +2755,10 @@ select.form-control-lg:not([size]):not([multiple]),
 
 @media (min-width: 576px) {
   .form-inline label {
-    display: flex;
+    display: block;
     align-items: center;
     justify-content: center;
-    margin-bottom: 0;
+    margin-bottom: auto;
   }
 
   .form-inline .form-group {
