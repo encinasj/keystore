@@ -1,6 +1,8 @@
-from django.shortcuts import render
 #Django
+from django.shortcuts import render
 from django.views.generic import ListView
+from django.utils.decorators import method_decorator
+
 #ours
 from core.erp.models import Category
 
